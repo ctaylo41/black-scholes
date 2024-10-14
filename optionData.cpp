@@ -78,8 +78,8 @@ double StockData::calculateVolatility() const {
     }
 
     variance /= dailyReturns.size();
-
-    return std::sqrt(variance);
+    double yearlyVolatility = std::sqrt(variance);
+    return yearlyVolatility * std::sqrt(252);
 }
 
 double norm_cdf(double x) {

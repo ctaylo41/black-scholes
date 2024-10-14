@@ -125,6 +125,7 @@ int main(int argc, char* argv[]) {
     std::string pastStr;
 
     getDateInfo(nowStr,pastStr);
+    std::cout << nowStr << " " << pastStr << std::endl;
     std::string stockUrl = "https://api.polygon.io/v2/aggs/ticker/" + optionData.results.underlying_ticker + "/range/1/day/"+pastStr+ "/" + nowStr+"?adjusted=true&sort=desc&apiKey=" + apiKey;
     string stockResponse;
     if (!performCurlRequest(stockUrl, stockResponse)) {
@@ -161,7 +162,7 @@ int main(int argc, char* argv[]) {
     double putPrice = bsParams.putPrice();
     std::cout << "Call Price: " << callPrice << std::endl;
     std::cout << "Put Price: " << putPrice << std::endl;
-
+    std::cout << "Volatility: " << bsParams.sigma <<std::endl;
     // Calculate and print the Greeks
     std::cout << "Delta: " << bsParams.delta() << std::endl;
     std::cout << "Gamma: " << bsParams.gamma() << std::endl;
